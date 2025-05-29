@@ -1,16 +1,6 @@
-const fetchData = require("./asynchronous");
+const fetchPromise = require('./promise')
 
-test('the data is peanut butter', done => {
-    function callback(data) {
-        try {
-            expect(data).toBe('peanut butter');
-            done();
-        } catch (error) {
-            done(error);
-        }
-
-    }
-
-    fetchData(callback);
-
+test('the data is peanut butter', async () => {
+    const data = await fetchPromise();
+    expect(data).toBe('peanut butter');
 });
