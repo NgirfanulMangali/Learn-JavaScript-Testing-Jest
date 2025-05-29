@@ -1,8 +1,16 @@
-const myFunction = require("./myFunction")
+const fetchData = require("./asynchronous");
 
-test('throws on invalid input', () => {
-    expect(() => {
-        myFunction(4);
-    }).toThrow()
+test('the data is peanut butter', done => {
+    function callback(data) {
+        try {
+            expect(data).toBe('peanut butter');
+            done();
+        } catch (error) {
+            done(error);
+        }
 
-})
+    }
+
+    fetchData(callback);
+
+});
